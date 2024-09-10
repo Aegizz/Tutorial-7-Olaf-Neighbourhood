@@ -77,7 +77,9 @@ Sent when a user wants to send a chat message to another user[s]. Chat messages 
         "symm_keys": [
             "<Base64 encoded AES key, encrypted with each recipient's public RSA key>",
         ],
-        "chat": "<Base64 encoded AES encrypted segment>"
+        "chat": "<Base64 encoded AES encrypted segment>",
+        "client-info":"<client-id>-<server-id>",
+        "time-to-die":"UTC-Timestamp"
     }
 }
 
