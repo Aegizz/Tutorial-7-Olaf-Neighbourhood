@@ -128,7 +128,9 @@ Server response:
             "address": "<Address of server>",
             "server-id":"<server-id>",
             "clients": [
-                {"client-id":"<client-id>","public-key":"<Exported RSA public key of client>"},
+                {
+                    "client-id":"<client-id>",
+                    "public-key":"<Exported RSA public key of client>"},
             ]
         },
     ]
