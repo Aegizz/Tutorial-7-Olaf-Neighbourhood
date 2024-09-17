@@ -130,7 +130,9 @@ Server response:
             "clients": [
                 {
                     "client-id":"<client-id>",
-                    "public-key":"<Exported RSA public key of client>"},
+                    "public-key":"<Exported RSA public key of client>"
+                    
+                },
             ]
         },
     ]
