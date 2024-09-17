@@ -64,7 +64,7 @@ This message is sent when first connecting to a server to establish your public 
 ```
 
 ### Chat
-Sent when a user wants to send a chat message to another user[s]. Chat messages are end-to-end encrypted.
+Sent when a user wants to send a chat message to another user[s]. Chat messages are end-to-end encrypted. Time to death is 1 minute.
 
 ```JSON
 {
@@ -131,7 +131,7 @@ Server response:
                 {
                     "client-id":"<client-id>",
                     "public-key":"<Exported RSA public key of client>"
-                    
+
                 },
             ]
         },
@@ -282,3 +282,9 @@ Symmetric encryption is performed with AES in GCM mode.
 - encrypt the symmetric key used to encrypt the message with the public asymmetric encrption key of the intended recipient
 - format these to be sent as shown in proctocol defined messages
 
+
+### Recommended Libraries
+
+ - [OpenSSL]()
+ - [JSON](https://github.com/nlohmann/json)
+ - [Websocket++](https://github.com/zaphoyd/websocketpp)
