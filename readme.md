@@ -155,7 +155,10 @@ The `client_update` advertises all currently connected users on a particular ser
 {
     "type": "client_update",
     "clients": [
-        "<Exported RSA public key of client>",
+        {
+          "client-id":"<client-id>",
+          "public-key":"<public-key>"
+        },
     ]
 }
 ```
@@ -171,7 +174,18 @@ When a server comes online, it will have no initial knowledge of clients connect
 ```
 All other servers respond by sending `client_update`
 
-### Defintion Tables of Types and Sections and additonal explanations
+#### Server Hello
+When a server establishes a connection with another server in the neighbourhood, it sends this message. It doesn't send a public key, as this should be shared prior when agreeing on a neighbourhood, and can be used to verify the identity of the server.
+```JSON
+{
+   "data": {
+        "type": "server_hello",
+        "sender": "<server IP connecting>"
+   }
+}
+```
+
+### Definition Tables of Types and Sections and additional explanations
 
 #### tables
 | Type | Type Meaning |
@@ -187,6 +201,7 @@ All other servers respond by sending `client_update`
 | chat | message that has chat message data in it |
 | hello | message sent when client connects to a server |
 | public_chat | message sent to every one connected in the neighbourhood and homeServer not encrypted |
+| server_hello | message sent between server-to-server connections |
 
 #### Counter
 Every message sent by user, tied to their unique key set, has the counter attached to it. The recipient stores the counter value from the latest message sent to them by each user, then when ever a new message received, the counter value stored is compared to the value in the message. If the new value is larger than the old one, the message has not been resent. The starting value of the count will be 0.
@@ -264,7 +279,7 @@ Asymmetric encryption and decryption is performed with RSA.
 - Key size/Modulus length (n) = 2048 bits
 - Public exponent (e) = 65537
 - Padding scheme: OAEP with SHA-256 digest/hash function
-- Public keys are exported in PEM encoding with PKCS8 format.
+- Public keys are exported in PEM encoding with SPKI format.
 
 Signing and verification also uses RSA. It shares the same keys as encryption/decryption.
 - Padding scheme: PSS with SHA-256 digest/hash function
